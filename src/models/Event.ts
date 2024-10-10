@@ -1,25 +1,29 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 const EventSchema = new Schema({
   name: { type: String, required: true },
   dateTime: { type: Date, required: true },
-  type: { type: String, required: true },
+  type: {
+    type: String,
+    enum: ['class', '1-on-1', 'workshop'],
+    required: true,
+  },
   location: {
     type: Schema.Types.ObjectId,
-    ref: "Location",
-    required: true
+    ref: 'Location',
+    required: true,
   },
   description: String,
   tags: [String],
   createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now }
+  updatedAt: { type: Date, default: Date.now },
 });
 
-EventSchema.pre("save", function (next) {
-  if (this.isModified("dateTime") && new Date(this.dateTime) < new Date()) {
-    throw new Error("Cannot update past events.");
+EventSchema.pre('save', function (next) {
+  if (this.isModified('dateTime') && new Date(this.dateTime) < new Date()) {
+    throw new Error('Cannot update past events.');
   }
   next();
 });
 
-export const Event = model("Event", EventSchema);
+export const Event = model('Event', EventSchema);
