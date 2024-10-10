@@ -38,8 +38,9 @@ export const eventResolvers = {
       if (!event) throw new Error('Event not found');
 
       const date = new Date();
+      const eventDateTime = new Date(event.dateTime);
 
-      if (date > event.dateTime) {
+      if (date > eventDateTime) {
         throw new Error('Event cannot be updated after its date/time');
       }
 

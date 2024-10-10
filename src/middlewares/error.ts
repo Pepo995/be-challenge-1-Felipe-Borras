@@ -12,7 +12,6 @@ export const errorLogger = (error: GraphQLError) => {
 
 export const errorResponder = (error: GraphQLError) => {
   if (error.originalError instanceof ValidationError || error.originalError instanceof Error.ValidationError) {
-    const statusCode = error.extensions?.statusCode || 500;
     return new ApolloError('Invalid input provided', 'BAD_USER_INPUT');
   }
 
