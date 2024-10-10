@@ -1,9 +1,7 @@
-import mongoose from "mongoose";
-import createInitialData from "../helpers/initialData";
+import mongoose from 'mongoose';
+import createInitialData from '../helpers/initialData';
 
-const connectionString = process.env.CONNECTION_STRING || "";
-
-console.log("connectionString", connectionString);
+const connectionString = process.env.CONNECTION_STRING || '';
 
 const connectDB = async () => {
   try {
