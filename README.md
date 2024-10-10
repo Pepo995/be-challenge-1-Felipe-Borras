@@ -65,8 +65,6 @@ Do your best and have fun!
 
 # Developer Diary
 
----
-
 ## Details & Requirements
 
 - **Stack:** MongoDB (Mongoose), GraphQL (Apollo), TypeScript.
@@ -111,8 +109,6 @@ Do your best and have fun!
 - I wasn't sure if pagination and sorting (required for event listing) should be handled directly in GraphQL or offloaded to Mongoose queries. I ended up doing it with Mongoose querying.
 - I would have liked to extract the types of the inputs from the TypeDefs that are within types to avoid having to define them twice. I couldn't find a way to do this. Is there a recommended technique or pattern to prevent type duplication between TypeScript and GraphQL?
 - In the error handling with _GraphQLError_, I noticed that _GraphQLError_ is always returning a status code (obtained from _error.extensions?.statusCode_) of 500. While the errors are being handled properly, the error code remains the same. I didn't have time to fully investigate why this is happening. Is there a common reason for this behavior?
-
----
 
 ## Future Enhancements / Nice to Haves
 
